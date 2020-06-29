@@ -6,6 +6,7 @@
     </div>
     <!-- Removing the v-if / v-else also fixes the problem -->
     <slot v-else></slot>
+    <!-- Changing the v-else to v-if="!loading" causes even a weirder problem: the *second* tag isn't correctly loaded -->
   </div>
 </template>
 
@@ -16,7 +17,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 export default class Loader extends Vue {
   loading = true;
   mounted() {
-    setTimeout(() => this.loading = false, 1000);
+    this.loading = false;
   }
 }
 </script>
